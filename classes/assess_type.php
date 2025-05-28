@@ -170,4 +170,15 @@ class assess_type {
         }
         return $DB->get_records('local_assess_type', $params);
     }
+
+    static public function cm_info_view(\cm_info $cm) {
+        global $CFG;
+        $t = self::get_type_name($cm->id);
+
+        $cm->set_after_link("<span class=\"badge badge-secondary\">Type $t</span>");
+
+        $c = $cm->get_formatted_content();
+        $c .= '<div class="text-muted small">Here</div>';
+        $cm->set_content($c,true);   
+    }
 }
