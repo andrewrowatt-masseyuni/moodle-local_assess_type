@@ -175,6 +175,13 @@ class assess_type {
         global $CFG;
         $t = self::get_type_name($cm->id);
 
+        $h = \local_modcustomfields\customfield\mod_handler::create();
+        // $f = $h->get_fields($cm->modname, $cm->course, $cm->id);
+        $f = $h->get_instance_data($cm->id);
+        var_dump($f[1]->get_value());
+        
+
+
         $cm->set_after_link("<span class=\"badge badge-secondary\">Type $t</span>");
 
         $c = $cm->get_formatted_content();
